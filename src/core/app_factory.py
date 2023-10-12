@@ -3,9 +3,11 @@ from views import all_views
 
 
 def get_production_app() -> Flask:
-    app = Flask(__name__)
-    _register_views(app)
-    return app
+    return _get_flask_app()
+
+
+def get_test_app() -> Flask:
+    return _get_flask_app()
 
 
 def run_app(app: Flask) -> None:
@@ -14,6 +16,12 @@ def run_app(app: Flask) -> None:
         port=5000,
         debug=True,
     )
+
+
+def _get_flask_app() -> Flask:
+    app = Flask(__name__)
+    _register_views(app)
+    return app
 
 
 def _register_views(app: Flask) -> None:
