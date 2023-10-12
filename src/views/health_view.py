@@ -1,5 +1,5 @@
+from flask import Response, jsonify
 from flask.blueprints import Blueprint
-from flask import jsonify, Response
 
 
 health_view = Blueprint('health', __name__)

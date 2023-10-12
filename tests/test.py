@@ -1,4 +1,5 @@
 from abc import ABC
+
 from flask.testing import FlaskClient
 
 

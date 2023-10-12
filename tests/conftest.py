@@ -1,8 +1,9 @@
+from core import get_test_app
+
 from flask import Flask
 from flask.testing import FlaskClient
-import pytest
 
-from core import get_test_app
+import pytest
 
 
 @pytest.fixture(scope='session')
