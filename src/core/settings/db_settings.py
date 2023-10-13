@@ -25,7 +25,7 @@ class DBSettings(Settings):
         return f'{self.driver}://{self.user}:{self.password}@{self.host}:{self.port}/{self.db}'
 
     @property
-    def config(self) -> dict[str, str]:
+    def config(self) -> dict:
         return {
             'SQLALCHEMY_DATABASE_URI': self.url,
         }
