@@ -35,6 +35,7 @@ def _register_views(app: Flask) -> None:
 
 
 def _config_app(app: Flask) -> None:
+    app.config.from_mapping(**settings.app.config)
     app.config.from_mapping(**settings.db.config)
 
 
