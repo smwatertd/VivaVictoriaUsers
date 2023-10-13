@@ -55,7 +55,7 @@ class TestUsersView(TestCase):
         create_user_service: MagicMock,
         create_user_schema: CreateUserSchema,
     ) -> None:
-        create_user_service.side_effect = UserAlreadyExists('user already exists')
+        create_user_service.side_effect = UserAlreadyExists
 
         response = self.client.post('/users', json=create_user_schema.model_dump())
 
