@@ -9,6 +9,7 @@ repos:
         -   pyproject-flake8
         -   flake8-bugbear
         -   flake8-print
+        -   flake8-import-order
 
 -   repo: https://github.com/pre-commit/mirrors-mypy
     rev: v1.5.0
