@@ -37,6 +37,10 @@ jobs:
         run: |
           poetry install --with test
 
+      - name: Clear .env File
+        run: |
+          echo "" > .env
+
       - name: Testing
         run: |
           poetry run pytest tests
