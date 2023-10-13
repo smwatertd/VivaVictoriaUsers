@@ -1,3 +1,5 @@
+from core import extensions, settings
+
 from flask import Flask
 
 from views import all_views
@@ -22,9 +24,19 @@ def run_app(app: Flask) -> None:
 def _get_flask_app() -> Flask:
     app = Flask(__name__)
     _register_views(app)
+    _config_app(app)
+    _init_extensions(app)
     return app
 
 
 def _register_views(app: Flask) -> None:
     for view in all_views:
         app.register_blueprint(view)
+
+
+def _config_app(app: Flask) -> None:
+    app.config.from_mapping(**settings.db.config)
+
+
+def _init_extensions(app: Flask) -> None:
+    extensions.db.init_app(app)
