@@ -1,5 +1,7 @@
 from typing import Any
 
+from exceptions import UserAlreadyExists
+
 from repositories.base import UserRepository
 
 from schemas import CreateUserSchema
@@ -18,6 +20,8 @@ class CreateUserService(Service):
         self._password_encryptor = password_encryptor
 
     def __call__(self, session: Any, user: CreateUserSchema) -> None:
+        if self._user_repository.is_user_exists(session, email=user.email, username=user.username):
+            raise UserAlreadyExists
         user.password = self._password_encryptor.hash_password(user.password)
         self._user_repository.create_user(session, user)
         session.commit()
