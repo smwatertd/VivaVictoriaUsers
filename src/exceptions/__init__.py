@@ -1,0 +1,3 @@
+from exceptions.invalid_register_field import InvalidRegisterField
+from exceptions.user_already_exists import UserAlreadyExists
+from exceptions.user_register_error import UserRegisterError

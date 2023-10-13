@@ -5,6 +5,8 @@ from flask.testing import FlaskClient
 
 import pytest
 
+from schemas import CreateUserSchema
+
 
 @pytest.fixture(scope='session')
 def app() -> Flask:
@@ -19,3 +21,12 @@ def client(app: Flask) -> FlaskClient:
 @pytest.fixture(scope='class', autouse=True)
 def class_client(request: pytest.FixtureRequest, client: FlaskClient) -> None:
     request.cls.client = client
+
+
+@pytest.fixture(scope='session')
+def create_user_schema() -> CreateUserSchema:
+    return CreateUserSchema(
+        email='user1@gmail.com',
+        username='user1',
+        password='password',
+    )
