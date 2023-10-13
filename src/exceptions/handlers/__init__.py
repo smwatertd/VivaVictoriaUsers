@@ -1,0 +1,1 @@
+from exceptions.handlers.user_register_error import user_register_error_handler
