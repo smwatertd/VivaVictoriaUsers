@@ -1,5 +1,7 @@
 from core.settings.settings import Settings
 
+from pydantic import Field
+
 from pydantic_settings import SettingsConfigDict
 
 
@@ -10,7 +12,7 @@ class DBSettings(Settings):
     user: str = 'postgres'
     password: str = 'postgres'
     db: str = 'postgres'
-    echo: bool = False
+    echo: bool = Field(default=False, alias='echo')
 
     model_config = SettingsConfigDict(
         env_file='.env',
@@ -23,7 +25,7 @@ class DBSettings(Settings):
         return f'{self.driver}://{self.user}:{self.password}@{self.host}:{self.port}/{self.db}'
 
     @property
-    def config(self) -> dict:
+    def config(self) -> dict[str, str]:
         return {
             'SQLALCHEMY_DATABASE_URI': self.url,
         }
