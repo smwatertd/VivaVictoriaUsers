@@ -1,0 +1,12 @@
+version: '3'
+services:
+  test:
+    container_name: viva-victoria-users
+    image: smwater/viva-victoria-users-prod:latest
+    command: poetry run gunicorn --workers 8 --bind 0.0.0.0:5000 main:app
+    restart: unless-stopped
+    ports:
+      - 5000:5000
+    build:
+      context: ../
+      dockerfile: docker/Dockerfile
