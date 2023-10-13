@@ -1,4 +1,4 @@
-from tests.test import TestCase
+from tests.test_case import TestCase
 
 
 class TestHealthView(TestCase):
